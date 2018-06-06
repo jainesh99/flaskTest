@@ -12,5 +12,5 @@ def index():
 @app.route('/testpyauto/start')
 def start():
     testpy = TestPyAuto()
-    testpy.startPyAuto()
+    testpy.startpyauto()
     return 'Start Application'

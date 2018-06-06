@@ -3,6 +3,6 @@ import pyautogui
 
 class TestPyAuto:
 
-    def startPyAuto(self):
+    def startpyauto(self):
         print(pyautogui.size())
         pyautogui.press('apps')
