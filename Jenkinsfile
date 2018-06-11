@@ -11,7 +11,7 @@ pipeline {
         sh 'pyinstaller --onefile main.py'
       }
     }
-    stage('Deliver') {
+    stage('Artifact Storage') {
       steps {
         archiveArtifacts 'dist/main'
       }
