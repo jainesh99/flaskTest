@@ -16,5 +16,10 @@ pipeline {
         archiveArtifacts 'dist/main'
       }
     }
+    stage('Copy Artifacts') {
+      steps {
+        copyArtifacts(projectName: 'flaskTest', target: 'testNode')
+      }
+    }
   }
 }
