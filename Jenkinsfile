@@ -14,7 +14,6 @@ pipeline {
     stage('Deliver') {
       steps {
         archiveArtifacts 'dist/main'
-        copyArtifacts 'flaskTest'
       }
     }
   }
