@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Create Installer') {
       steps {
-        sh 'pyinstaller      --onefile main.py'
+        sh 'pyinstaller --onefile main.py'
       }
     }
   }
