@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Copy Artifacts') {
       steps {
-        copyArtifacts(projectName: 'dist/main', target: 'testNode')
+        copyArtifacts(projectName: 'flaskTest_master', target: 'testNode')
       }
     }
   }
