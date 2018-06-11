@@ -16,5 +16,10 @@ pipeline {
         sh 'pyinstaller --onefile main.py'
       }
     }
+    stage('Deliver') {
+      steps {
+        copyArtifacts 'flaskTest'
+      }
+    }
   }
 }
