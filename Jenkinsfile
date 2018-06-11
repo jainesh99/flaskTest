@@ -6,5 +6,10 @@ pipeline {
         sh 'python -m py_compile main.py testpyauto.py'
       }
     }
+    stage('Create Installer') {
+      steps {
+        sh 'pyinstaller main.py'
+      }
+    }
   }
 }
