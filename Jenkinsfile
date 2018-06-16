@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Copy Artifacts') {
       steps {
-        copyArtifacts(projectName: '${JOB_NAME}', target: 'testNode')
+        copyArtifacts(projectName: '${JOB_NAME}', target: 'testNode', filter: 'dist/*')
       }
     }
   }
