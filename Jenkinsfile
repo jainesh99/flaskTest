@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Copy Artifacts') {
       steps {
-        copyArtifacts '${JOB_NAME}'
+        copyArtifacts(projectName: '${JOB_NAME}', target: 'TestNode\\workspace')
       }
     }
   }
