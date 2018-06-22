@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Echo') {
           steps {
-            echo '${JOB_NAME}'
+            echo '${env.JOB_NAME}'
           }
         }
       }
