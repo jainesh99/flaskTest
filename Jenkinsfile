@@ -20,7 +20,7 @@ pipeline {
     stage('Delivery') {
       steps {
         node(label: 'test') {
-          echo 'hello'
+          cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/dist/*.exe']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
         }
 
       }
