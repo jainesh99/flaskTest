@@ -20,6 +20,7 @@ pipeline {
     stage('Delivery') {
       steps {
         node(label: 'test') {
+        echo '$JOB_NAME'
           cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '$JOB_NAME/dist/main']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
         }
 
