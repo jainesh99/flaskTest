@@ -17,5 +17,13 @@ pipeline {
         stash(name: 'buildFiles', includes: 'dist/**')
       }
     }
+    stage('Delivery') {
+      steps {
+        node(label: 'test') {
+          echo 'hello'
+        }
+
+      }
+    }
   }
 }
