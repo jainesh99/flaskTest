@@ -14,15 +14,23 @@ pipeline {
     stage('Artifact Storage') {
       steps {
         archiveArtifacts 'dist/main'
-        stash(name: 'buildFiles', includes: 'dist/**')
       }
     }
     stage('Delivery') {
-      steps {
-        node(label: 'test') {
-          cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '$JOB_NAME/dist/main']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
-        }
+      parallel {
+        stage('Delivery') {
+          steps {
+            node(label: 'test') {
+              cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '$JOB_NAME/dist/main']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
+            }
 
+          }
+        }
+        stage('Echo') {
+          steps {
+            echo '$JOB_NAME'
+          }
+        }
       }
     }
   }
