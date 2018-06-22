@@ -17,14 +17,5 @@ pipeline {
         stash(name: 'buildFiles', includes: 'dist/**')
       }
     }
-    stage('Copy Artifacts') {
-      steps {
-        copyArtifacts(projectName: '${JOB_NAME}', target: 'TestNode\\workspace')
-        node(label: 'TestNode') {
-          unstash 'buildFiles'
-        }
-
-      }
-    }
   }
 }
