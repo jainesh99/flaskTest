@@ -20,10 +20,7 @@ pipeline {
       parallel {
         stage('Delivery') {
           steps {
-            node(label: 'test') {
-              cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'dist/**']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
-            }
-
+              cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/dist/*']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
           }
         }
         stage('Echo') {
