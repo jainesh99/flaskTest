@@ -12,22 +12,8 @@ pipeline {
       }
     }
     stage('Delivery') {
-      parallel {
-        stage('Delivery') {
-          steps {
-            cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: true, noDefaultExcludes: false, patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'dist', sourceFiles: 'dist/**/**']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
-          }
-        }
-        stage('Echo') {
-          steps {
-            sh 'pwd'
-          }
-        }
-      }
-    }
-    stage('Archive Artifacts') {
       steps {
-        archiveArtifacts 'dist/main'
+        cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: true, noDefaultExcludes: false, patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'dist', sourceFiles: 'dist/**/**']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
       }
     }
   }
