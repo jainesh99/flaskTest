@@ -21,6 +21,7 @@ pipeline {
         stage('Delivery') {
           steps {
             node(label: 'test') {
+            sh 'pwd'
               cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'dist/**']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
             }
 
