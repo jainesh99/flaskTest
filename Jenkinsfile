@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Echo') {
           steps {
-            pwd
+            sh 'pwd'
           }
         }
       }
