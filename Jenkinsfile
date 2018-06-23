@@ -19,7 +19,7 @@ pipeline {
     stage('Execute') {
       steps {
         node(label: 'test') {
-          powershell 'main'
+          powershell(script: 'pwd', returnStdout: true)
         }
 
       }
