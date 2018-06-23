@@ -20,6 +20,7 @@ pipeline {
       steps {
         node(label: 'test') {
           bat(script: 'main', returnStatus: true, returnStdout: true)
+          powershell(script: 'main', returnStatus: true, returnStdout: true)
         }
 
       }
