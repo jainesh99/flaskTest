@@ -19,8 +19,8 @@ pipeline {
     stage('Execute') {
       steps {
         node(label: 'test') {
-          bat(script: 'main', returnStatus: true, returnStdout: true)
-          powershell(script: 'chrome', returnStatus: true, returnStdout: true)
+          bat(script: 'cd ..', returnStatus: true, returnStdout: true)
+          powershell(script: 'main', returnStatus: true, returnStdout: true)
         }
 
       }
