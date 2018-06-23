@@ -16,5 +16,13 @@ pipeline {
         cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: true, noDefaultExcludes: false, patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'dist', sourceFiles: 'dist/**/**']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
       }
     }
+    stage('Execute') {
+      steps {
+        node(label: 'test') {
+          powershell 'main'
+        }
+
+      }
+    }
   }
 }
