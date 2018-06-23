@@ -11,16 +11,11 @@ pipeline {
         sh 'pyinstaller --onefile main.py'
       }
     }
-    stage('Artifact Storage') {
-      steps {
-        archiveArtifacts 'dist/main'
-      }
-    }
     stage('Delivery') {
       parallel {
         stage('Delivery') {
           steps {
-              cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'dist/*.*']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
+            cifsPublisher(publishers: [[configName: 'test', transfers: [[cleanRemote: false, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'dist/*.*']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
           }
         }
         stage('Echo') {
@@ -28,6 +23,11 @@ pipeline {
             sh 'pwd'
           }
         }
+      }
+    }
+    stage('Archive Artifacts') {
+      steps {
+        archiveArtifacts 'dist/main'
       }
     }
   }
