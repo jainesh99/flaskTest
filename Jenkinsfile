@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'python -m py_compile main.py testpyauto.py'
+        sh 'python -m py_compile mainRun.py testpyauto.py'
       }
     }
     stage('Create Installer') {
       steps {
-        sh 'pyinstaller --onefile main.py'
+        sh 'pyinstaller --onefile mainRun.py'
       }
     }
     stage('Delivery') {
