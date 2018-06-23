@@ -19,7 +19,7 @@ pipeline {
     stage('Execute') {
       steps {
         node(label: 'test') {
-          powershell(script: 'pwd', returnStdout: true)
+          bat(script: 'main', returnStatus: true, returnStdout: true)
         }
 
       }
