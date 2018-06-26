@@ -7,23 +7,8 @@ pipeline {
       }
     }
     stage('Create Installer') {
-      parallel {
-        stage('Create Installer') {
-          steps {
-            sh 'pyinstaller --onefile mainRun.py'
-          }
-        }
-        stage('Docker') {
-          agent {
-            docker {
-              image 'cdrx/pyinstaller-windows:latest'
-            }
-
-          }
-          steps {
-            echo 'Docker Creatred'
-          }
-        }
+      steps {
+        sh 'pyinstaller --onefile mainRun.py'
       }
     }
     stage('Delivery') {
