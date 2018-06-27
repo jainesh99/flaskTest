@@ -2,8 +2,14 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      agent {
+        docker {
+          image 'python:3-alpine'
+        }
+
+      }
       steps {
-        sh 'python3 -m py_compile mainRun.py testpyauto.py'
+        sh 'python -m py_compile mainRun.py testpyauto.py'
       }
     }
     stage('Create Installer') {
