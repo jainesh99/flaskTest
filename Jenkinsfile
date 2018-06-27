@@ -13,6 +13,12 @@ pipeline {
       }
     }
     stage('Create Installer') {
+      agent {
+        docker {
+          image 'cdrx/pyinstaller-windows:python3'
+        }
+
+      }
       steps {
         sh 'pyinstaller --onefile mainRun.py'
       }
