@@ -15,7 +15,7 @@ pipeline {
     stage('Create Installer') {
       agent {
         docker {
-          image 'cdrx/pyinstaller-windows:python3'
+          image 'cdrx/pyinstaller-windows:latest'
         }
 
       }
