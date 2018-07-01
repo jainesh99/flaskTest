@@ -7,14 +7,8 @@ pipeline {
       }
     }
     stage('Create Installer') {
-      agent {
-        docker {
-          image 'cdrx/pyinstaller-linux:latest'
-        }
-
-      }
       steps {
-        sh 'pyinstaller --onefile mainRun.py'
+        bat 'pyinstaller --onefile mainRun.py'
       }
     }
     stage('Delivery') {
