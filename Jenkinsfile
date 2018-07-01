@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'python -m py_compile mainRun.py testpyauto.py'
+        bat 'python -m py_compile mainRun.py testpyauto.py'
       }
     }
     stage('Create Installer') {
