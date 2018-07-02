@@ -19,10 +19,11 @@ pipeline {
     stage('Execute') {
       steps {
         node(label: 'test') {
-          bat(script: 'cd ..', returnStatus: true, returnStdout: true)
+          bat(script: 'cd C:\\Jenkins\\workspace\\$JOB_NAME', returnStatus: true, returnStdout: true)
           powershell(script: 'main', returnStatus: true, returnStdout: true)
         }
 
+        echo '${env.JOB_NAME}'
       }
     }
   }
