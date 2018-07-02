@@ -23,7 +23,7 @@ pipeline {
           powershell(script: 'main', returnStatus: true, returnStdout: true)
         }
 
-        echo '${env.JOB_NAME}'
+        echo '$JOB_NAME'
       }
     }
   }
